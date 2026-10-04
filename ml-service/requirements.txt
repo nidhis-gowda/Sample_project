@@ -1,0 +1,10 @@
+# Runtime dependencies for the optional Python matching service.
+#
+# Lower bounds are the versions this project was written against. Upper bounds
+# are deliberately left open within the major version so that a modern CPython
+# (e.g. 3.14, which has no wheels for the older pydantic-core) can still resolve
+# a compatible build: pydantic-core gained cp314 wheels in 2.41.x, first shipped
+# with pydantic 2.12.
+fastapi>=0.115.6,<1.0
+uvicorn[standard]>=0.34.0,<1.0
+pydantic>=2.10.4,<3.0

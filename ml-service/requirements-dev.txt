@@ -1,0 +1,11 @@
+# Development / test-only dependencies for the Python matching service.
+#
+#   pip install -r requirements-dev.txt
+#   python -m unittest discover -s ml-service -p "test_*.py"
+#
+-r requirements.txt
+
+# Required by starlette's TestClient, which test_main.py uses to exercise the
+# real HTTP routes (`/health` and `/match`) rather than calling the handlers
+# directly.
+httpx>=0.27,<1.0

@@ -1,0 +1,50 @@
+{
+  "name": "smart-skill-allocation-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smart Employee Skill & Project Allocation Platform - manage employees, skills, projects, workloads and intelligently recommend the best-fitting employees for projects.",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "seed": "tsx scripts/seed.ts",
+    "seed:reset": "tsx scripts/seed.ts --reset",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "recompute-workload": "tsx scripts/recomputeWorkload.ts"
+  },
+  "dependencies": {
+    "@heroicons/react": "2.2.0",
+    "chart.js": "4.4.7",
+    "clsx": "2.1.1",
+    "date-fns": "4.1.0",
+    "mongoose": "8.9.5",
+    "next": "15.1.6",
+    "next-auth": "5.0.0-beta.25",
+    "pdf-lib": "1.17.1",
+    "react": "19.0.0",
+    "react-chartjs-2": "5.3.0",
+    "react-dom": "19.0.0",
+    "zod": "3.24.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "0.5.10",
+    "@types/node": "22.10.7",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "19.0.3",
+    "autoprefixer": "10.4.20",
+    "dotenv": "16.4.7",
+    "eslint": "8.57.1",
+    "eslint-config-next": "15.1.6",
+    "postcss": "8.5.1",
+    "tailwindcss": "3.4.17",
+    "tsx": "4.19.2",
+    "typescript": "5.7.3",
+    "vitest": "2.1.8"
+  }
+}

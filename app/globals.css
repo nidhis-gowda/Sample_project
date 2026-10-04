@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Design tokens. System font stack is used deliberately so the app
+   builds without any network access to Google Fonts.
+------------------------------------------------------------------ */
+:root {
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --brand: #4f46e5;
+  --brand-soft: #eef2ff;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-ink-50 text-ink-800 antialiased;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+}
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+@layer components {
+  /* ---------------- Cards / surfaces ---------------- */
+  .card {
+    @apply rounded-xl border border-ink-200 bg-white shadow-card;
+  }
+  .card-header {
+    @apply flex items-center justify-between gap-3 border-b border-ink-200 px-5 py-4;
+  }
+  .card-title {
+    @apply text-sm font-semibold text-ink-900;
+  }
+  .card-subtitle {
+    @apply mt-0.5 text-xs text-ink-500;
+  }
+  .card-body {
+    @apply p-5;
+  }
+
+  /* ---------------- Buttons ---------------- */
+  .btn {
+    @apply inline-flex select-none items-center justify-center gap-2 rounded-lg px-3.5 py-2 text-sm font-medium
+      transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500
+      focus-visible:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-800;
+  }
+  .btn-secondary {
+    @apply btn border border-ink-300 bg-white text-ink-700 hover:bg-ink-50 active:bg-ink-100;
+  }
+  .btn-ghost {
+    @apply btn text-ink-600 hover:bg-ink-100 hover:text-ink-900;
+  }
+  .btn-danger {
+    @apply btn bg-danger text-white hover:bg-danger-ink;
+  }
+  .btn-success {
+    @apply btn bg-success text-white hover:bg-success-ink;
+  }
+  .btn-xs {
+    @apply px-2 py-1 text-xs;
+  }
+  .btn-sm {
+    @apply px-2.5 py-1.5 text-xs;
+  }
+
+  /* ---------------- Form controls ---------------- */
+  .label {
+    @apply mb-1.5 block text-xs font-medium text-ink-600;
+  }
+  .input {
+    @apply block w-full rounded-lg border-ink-300 text-sm shadow-sm placeholder:text-ink-400
+      focus:border-brand-500 focus:ring-brand-500 disabled:bg-ink-100 disabled:text-ink-500;
+  }
+  .input-error {
+    @apply border-danger focus:border-danger focus:ring-danger;
+  }
+  .help-text {
+    @apply mt-1 text-xs text-ink-500;
+  }
+  .field-error {
+    @apply mt-1 text-xs font-medium text-danger;
+  }
+
+  /* ---------------- Badges ---------------- */
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+  .badge-neutral {
+    @apply badge bg-ink-100 text-ink-700;
+  }
+  .badge-brand {
+    @apply badge bg-brand-50 text-brand-700;
+  }
+  .badge-success {
+    @apply badge bg-success-soft text-success-ink;
+  }
+  .badge-warning {
+    @apply badge bg-warning-soft text-warning-ink;
+  }
+  .badge-danger {
+    @apply badge bg-danger-soft text-danger-ink;
+  }
+  .badge-info {
+    @apply badge bg-info-soft text-info-ink;
+  }
+
+  /* ---------------- Tables ---------------- */
+  .table-wrap {
+    @apply -mx-5 overflow-x-auto px-5;
+  }
+  .table {
+    @apply w-full min-w-[640px] border-separate border-spacing-0 text-sm;
+  }
+  .table thead th {
+    @apply sticky top-0 z-10 border-b border-ink-200 bg-ink-50 px-4 py-2.5 text-left
+      text-[11px] font-semibold uppercase tracking-wide text-ink-500;
+  }
+  .table tbody td {
+    @apply border-b border-ink-100 px-4 py-3 align-middle text-ink-700;
+  }
+  .table tbody tr:hover td {
+    @apply bg-ink-50/70;
+  }
+
+  /* ---------------- Misc ---------------- */
+  .link {
+    @apply text-brand-600 underline-offset-2 hover:text-brand-700 hover:underline;
+  }
+  .skeleton {
+    @apply relative overflow-hidden rounded-md bg-ink-200/70;
+  }
+  .skeleton::after {
+    content: "";
+    @apply absolute inset-0 -translate-x-full animate-shimmer
+      bg-gradient-to-r from-transparent via-white/60 to-transparent;
+  }
+  .nav-item {
+    @apply flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-ink-300
+      transition-colors hover:bg-white/5 hover:text-white;
+  }
+  .nav-item-active {
+    @apply bg-brand-600 text-white hover:bg-brand-600 hover:text-white;
+  }
+  .section-title {
+    @apply text-lg font-semibold tracking-tight text-ink-900;
+  }
+  .section-subtitle {
+    @apply mt-1 text-sm text-ink-500;
+  }
+}
