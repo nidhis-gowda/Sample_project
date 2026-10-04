@@ -7,7 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-Nothing yet.
+### Fixed
+
+- **The Team Builder endpoint could not be committed.** `.gitignore` contained an
+  unanchored `coverage/` entry, which also matched the *real source directory*
+  `app/api/projects/[id]/coverage/`. Git silently excluded the route, so the
+  published tree shipped without `POST /api/projects/:id/coverage` even though a
+  local build produced it happily. Build and coverage artefacts are now anchored
+  to the repository root (`/out/`, `/build/`, `/dist/`, `/coverage/`).
+- **README permission table.** `/api/projects/:id/recommendations` and
+  `/api/projects/:id/coverage` were documented as requiring `project:read`. Both
+  endpoints actually enforce `matching:read` — ranking the whole company is a
+  management capability that `EMPLOYEE` deliberately lacks. The documentation now
+  matches the enforced code.
+
+### Added
+
+- CI guard that fails the pipeline if any file under `app/`, `components/`,
+  `lib/`, `services/`, `models/`, `hooks/`, `types/`, `utils/`, `scripts/` or
+  `tests/` is excluded by `.gitignore`, so a silently-dropped source file can no
+  longer reach `main` unnoticed.
 
 ## [1.0.0] - 2026-10-04
 

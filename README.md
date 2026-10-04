@@ -316,8 +316,8 @@ All endpoints return a consistent envelope:
 | GET / PUT / DELETE | `/api/projects/:id` | `project:read` / `project:update` / `project:delete` |
 | POST | `/api/projects/:id/requirements` | `project:update` |
 | DELETE | `/api/projects/:id/requirements/:skillId` | `project:update` |
-| **GET** | **`/api/projects/:id/recommendations`** | `project:read` |
-| POST | `/api/projects/:id/coverage` | `project:read` |
+| **GET** | **`/api/projects/:id/recommendations`** | `matching:read` |
+| POST | `/api/projects/:id/coverage` | `matching:read` |
 | GET / POST | `/api/projects/:id/allocate` | `allocation:read` / `allocation:manage` |
 | GET | `/api/allocations` | `allocation:read` |
 | PUT / DELETE | `/api/allocations/:id` | `allocation:manage` |

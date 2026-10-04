@@ -38,6 +38,21 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Regression guard. An unanchored `coverage/` entry in .gitignore once
+      # matched the *source* directory `app/api/projects/[id]/coverage/`, so the
+      # committed tree silently shipped without a live Team Builder route even
+      # though the local build produced it. Fail loudly if any source file
+      # under these directories is excluded by .gitignore.
+      - name: Verify no source files are ignored by .gitignore
+        run: |
+          ignored=$(git ls-files --others --ignored --exclude-standard -- \
+            app components lib services models hooks types utils scripts tests)
+          if [ -n "$ignored" ]; then
+            echo "::error::These source files are excluded by .gitignore:"
+            echo "$ignored"
+            exit 1
+          fi
+
       - name: Typecheck
         run: npm run typecheck
 

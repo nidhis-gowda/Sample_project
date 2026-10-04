@@ -5,10 +5,16 @@ node_modules/
 .pnp
 .pnp.js
 .next/
-out/
-build/
-dist/
-coverage/
+
+# Build/coverage artefacts live at the repository root only, so these are
+# anchored with a leading slash. Without the slash a pattern such as
+# `coverage/` also matches *nested* directories at any depth, which silently
+# excluded the real source directory `app/api/projects/[id]/coverage/` and
+# shipped a build that was missing the Team Builder endpoint.
+/out/
+/build/
+/dist/
+/coverage/
 
 # ------------------------------------------------------------------
 # Environment files  (NEVER commit real secrets)
